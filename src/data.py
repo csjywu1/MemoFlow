@@ -408,13 +408,14 @@ def load_bundle(
     **kwargs,
 ) -> JointDataBundle:
     if dataset.upper() in {"AV2", "ARGOVERSE2", "ARGOVERSE_2"}:
-        from memoflow.av2_data import load_av2_bundle
+        from src.av2_data import load_av2_bundle
 
         return load_av2_bundle(repo_root=repo_root, **kwargs)
 
     root = (
         repo_root
         / "data"
+        / "processed"
         / "TrajImpute"
         / "pkl_type"
         / f"{dataset.upper()}-M"
@@ -434,6 +435,7 @@ def load_bundle(
             cache_path=(
                 repo_root
                 / "data"
+                / "processed"
                 / "TrajImpute"
                 / "aligned_history_cache"
                 / f"{dataset.upper()}_{difficulty}_{split}.pt"

@@ -1,0 +1,20 @@
+{
+  "dataset": "ETH",
+  "difficulty": "Hard",
+  "model": "variational_flow",
+  "use_memory": true,
+  "output_root": "outputs/eth/seed42",
+  "device": "cuda",
+  "amp": true,
+  "seed": 42,
+  "epochs": 30,
+  "patience": 6,
+  "batch_size": 128,
+  "lr": 0.0003,
+  "hidden_dim": 64,
+  "layers": 2,
+  "heads": 4,
+  "memory_k": 20,
+  "num_samples": 12,
+  "flow_steps": 12
+}

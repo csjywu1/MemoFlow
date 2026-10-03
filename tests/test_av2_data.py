@@ -9,7 +9,7 @@ import pyarrow as pa
 import pyarrow.parquet as pq
 import torch
 
-from memoflow.av2_data import (
+from src.av2_data import (
     AV2TrajectoryDataset,
     RawAV2Split,
     _artificial_mask,

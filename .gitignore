@@ -11,7 +11,8 @@ venv/
 
 # Training artifacts
 results/
-outputs/
+outputs/*
+!outputs/.gitkeep
 checkpoints/
 logs/
 *.pt
@@ -21,10 +22,10 @@ logs/
 *.npz
 
 # Datasets and generated caches
-data/AV2/
-data/TrajImpute/
-data/av2_joint_cache/
-data/**/cache/
+data/raw/*
+!data/raw/.gitkeep
+data/processed/*
+!data/processed/.gitkeep
 
 # IDE files
 .idea/

@@ -7,8 +7,8 @@ from types import SimpleNamespace
 import torch
 import torch.nn as nn
 
-from memoflow.model import TrajectoryMemory
-from memoflow.train import sample_flow
+from models.memoflow import TrajectoryMemory
+from src.train import sample_flow
 
 
 class DeterministicVelocity(nn.Module):

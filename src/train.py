@@ -17,12 +17,12 @@ from torch.optim import AdamW
 from torch.utils.data import DataLoader
 from tqdm import tqdm
 
-REPO_ROOT = Path(__file__).resolve().parents[2]
+REPO_ROOT = Path(__file__).resolve().parents[1]
 if str(REPO_ROOT) not in sys.path:
     sys.path.insert(0, str(REPO_ROOT))
 
-from memoflow.data import JointDataBundle, load_bundle, set_retrieval_key_variant
-from memoflow.model import (
+from src.data import JointDataBundle, load_bundle, set_retrieval_key_variant
+from models.memoflow import (
     JointCVAE,
     JointFlowModel,
     RetrievalResult,
@@ -5903,6 +5903,11 @@ def append_csv(path: Path, row: Dict) -> None:
 
 def main() -> None:
     parser = argparse.ArgumentParser()
+    parser.add_argument(
+        "--config",
+        default="",
+        help="Optional JSON file containing argument names and values.",
+    )
     parser.add_argument("--dataset", default="ZARA1")
     parser.add_argument("--difficulty", default="Easy", choices=["Easy", "Hard"])
     parser.add_argument(
@@ -6792,7 +6797,7 @@ def main() -> None:
     )
     parser.add_argument(
         "--av2-root",
-        default="data/AV2",
+        default="data/raw/Argoverse2_Motion_Forecasting",
     )
     parser.add_argument("--av2-train-size", type=int, default=8192)
     parser.add_argument("--av2-val-size", type=int, default=1024)
@@ -6897,6 +6902,18 @@ def main() -> None:
         action="store_true",
         help="Retain an epoch checkpoint at every validation evaluation.",
     )
+    preliminary, _ = parser.parse_known_args()
+    if preliminary.config:
+        config_path = Path(preliminary.config)
+        config = json.loads(config_path.read_text())
+        valid_keys = {action.dest for action in parser._actions}
+        unknown_keys = sorted(set(config) - valid_keys)
+        if unknown_keys:
+            raise ValueError(
+                f"unknown configuration keys in {config_path}: "
+                + ", ".join(unknown_keys)
+            )
+        parser.set_defaults(**config)
     args = parser.parse_args()
 
     args.dual_pool_expert_checkpoints = tuple(

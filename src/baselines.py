@@ -17,11 +17,11 @@ from torch.optim import AdamW
 from torch.utils.data import DataLoader, Subset
 from tqdm import tqdm
 
-REPO_ROOT = Path(__file__).resolve().parents[2]
+REPO_ROOT = Path(__file__).resolve().parents[1]
 if str(REPO_ROOT) not in sys.path:
     sys.path.insert(0, str(REPO_ROOT))
 
-from memoflow.data import JointDataBundle, load_bundle
+from src.data import JointDataBundle, load_bundle
 
 
 def set_seed(seed: int) -> None:
@@ -668,7 +668,7 @@ def main() -> None:
     parser.add_argument("--output-root", default="results/trajectory_prediction_baselines_v1")
     parser.add_argument(
         "--av2-root",
-        default="data/AV2",
+        default="data/raw/Argoverse2_Motion_Forecasting",
     )
     parser.add_argument("--av2-train-size", type=int, default=8192)
     parser.add_argument("--av2-val-size", type=int, default=1024)

@@ -8,7 +8,7 @@ from typing import Any
 
 import torch
 
-from memoflow.av2_data import _artificial_mask
+from src.av2_data import _artificial_mask
 
 
 RUNS = {

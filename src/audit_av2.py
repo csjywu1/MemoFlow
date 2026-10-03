@@ -8,12 +8,12 @@ from typing import Dict
 
 import torch
 
-REPO_ROOT = Path(__file__).resolve().parents[2]
+REPO_ROOT = Path(__file__).resolve().parents[1]
 if str(REPO_ROOT) not in sys.path:
     sys.path.insert(0, str(REPO_ROOT))
 
-from memoflow.data import load_bundle
-from memoflow.model import TrajectoryMemory
+from src.data import load_bundle
+from models.memoflow import TrajectoryMemory
 
 
 def _empty_sums() -> Dict[str, float]:
@@ -120,7 +120,7 @@ def main() -> None:
     parser = argparse.ArgumentParser()
     parser.add_argument(
         "--av2-root",
-        default="data/AV2",
+        default="data/raw/Argoverse2_Motion_Forecasting",
     )
     parser.add_argument("--train-size", type=int, default=8192)
     parser.add_argument("--val-size", type=int, default=1024)

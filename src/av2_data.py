@@ -13,7 +13,7 @@ import pyarrow.parquet as parquet
 import torch
 from torch.utils.data import Dataset
 
-from memoflow.data import (
+from src.data import (
     JointDataBundle,
     _canonicalize,
     _relative_rotation,

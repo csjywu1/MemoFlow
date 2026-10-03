@@ -5,7 +5,7 @@ import tempfile
 import unittest
 from pathlib import Path
 
-from memoflow.summarize_goal import run_metadata
+from src.summarize import run_metadata
 
 
 class RunMetadataTest(unittest.TestCase):

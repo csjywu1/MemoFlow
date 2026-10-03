@@ -1,0 +1,11 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite the MemoFlow paper."
+title: "MemoFlow: Memory-Anchored Flow Matching for Joint Trajectory Imputation and Forecasting"
+type: software
+version: 1.0.0
+date-released: 2026-10-03
+repository-code: "https://github.com/csjywu1/MemoFlow"
+license: MIT
+authors:
+  - family-names: Wu
+    given-names: Jiayang

@@ -2,34 +2,6 @@
 requires = ["setuptools>=68", "wheel"]
 build-backend = "setuptools.build_meta"
 
-[project]
-name = "memoflow"
-version = "0.1.0"
-description = "Memory-anchored flow matching for joint trajectory imputation and forecasting"
-readme = "README.md"
-requires-python = ">=3.10"
-dependencies = [
-  "numpy>=1.26,<2.0",
-  "pyarrow>=15.0",
-  "scipy>=1.13",
-  "torch>=2.2",
-  "tqdm>=4.66",
-]
-
-[project.optional-dependencies]
-dev = ["pytest>=8.0"]
-
-[project.scripts]
-memoflow-train = "memoflow.train:main"
-memoflow-baseline = "memoflow.prediction_baseline:main"
-memoflow-audit-av2 = "memoflow.av2_memory_audit:main"
-
-[tool.setuptools]
-package-dir = {"" = "src"}
-
-[tool.setuptools.packages.find]
-where = ["src"]
-
 [tool.pytest.ini_options]
-pythonpath = ["src"]
 testpaths = ["tests"]
+addopts = "-q"
