@@ -1,0 +1,31 @@
+__pycache__/
+*.py[cod]
+*.so
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.venv/
+venv/
+.env
+.DS_Store
+
+# Training artifacts
+results/
+outputs/
+checkpoints/
+logs/
+*.pt
+*.pth
+*.ckpt
+*.npy
+*.npz
+
+# Datasets and generated caches
+data/AV2/
+data/TrajImpute/
+data/av2_joint_cache/
+data/**/cache/
+
+# IDE files
+.idea/
+.vscode/
